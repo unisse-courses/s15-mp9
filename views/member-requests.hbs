@@ -1,12 +1,17 @@
 {{#section 'head'}}
- <!-- CSS -->
-    <link rel="stylesheet" href="../../public/css/style.css">
+    <!-- CSS -->    
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/public/css/sidenav.css">
+    <!-- JS -->
+    <script src="/scripts/request.js"></script>
 {{/section}}
+
+{{>sidebar orgId=org._id}}
    
 <div class="container inner-box">
     <div id="account-details">
         <div class="profile">
-            <img src="{{org.org_logo}}">
+            <img src="{{org.img}}">
             <h1>{{org.org_name}}</h1>
             <ul>
                  {{#each org.tags}}
@@ -26,26 +31,28 @@
         </div>
     </div>
 
-    <div class="box mt-4" style="background-color: #7c3bff1f;">
-        <h1>Member Requests</h1>
+    <div class="box mt-4">
+        <h1 class="page-title">Member Requests</h1>
         <div class="information" id="request-list">
         {{#if reqs}}
         {{#each reqs}}
-        <a class="requests" href="/user-profile/{{this.user_id.0._id}}">
-            <img class="prof-pic" src="{{this.user_id.0.photo}}">
-            <span>
-                <span class="member-name">{{this.user_id.0.first_name}} {{this.user_id.0.last_name}}</span>
-                <p>{{this.user_id.0.position}}</p>
-            </span>
+        <div class="requests" id="{{this._id}}">
+            <a class="request-info" href="/user-profile/{{this.user_id._id}}">
+                <img class="prof-pic" src="{{this.img}}">
+                <div style="width:112px;">
+                    <span class="member-name">{{this.user_id.first_name}} {{this.user_id.last_name}}</span>
+                    <p>{{this.position}}</p>
+                </div>
+            </a>
             <div class="button-group">
-                <button type="button" class="reqbtn check">
-                    <img src="../assets/accept.png">
+                <button type="button" class="reqbtn check" data-id="{{this._id}}">
+                    <img src="/public/assets/accept.png">
                 </button>
-                <button type="button" class="reqbtn reject">
-                    <img src="../assets/reject.png">             
+                <button type="button" class="reqbtn reject" data-id="{{this._id}}">
+                    <img src="/public/assets/reject.png">             
                 </button>       
             </div>
-        </a>
+        </div>
        {{/each}}
        {{else}}
         <p> No requests yet.</p>

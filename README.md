@@ -19,12 +19,23 @@ The current working features are:
 * Viewing the list of organization in the /explore page, along with viewing the specific org by clicking on it.
 * Viewing the list of events per organization.
 * Viewing the list of officers per organization.
-* Viewing the user profile which includes the organizations the user is part of and the events he/she has on their planner.
+* Viewing the user profile which includes the organizations the user is part of.
+* Viewing user planner; Filtered by Year, Month, and Day.
+* Viewing other user profiles and the orgs they belong to.
 * Viewing the user requests.
 * Viewing the organization membership requests.
-
+* Add/Delete User Requests and Member Requests (Admin)
+* Add/Delete organization events (Admin)
+* Update basic user info
+* Update event/s and organization info (Admin)
+### Additional Features ###
+* Search an organization
+* Dashboard Event Banner Carousell
+* Google Account Sign-In and Registration
+* Auto-Suggest in search fields
+* Mini Sidebar for easier navigation of Admin Tools and overall better user experience
 ## :computer: How to Run ##
-The current submission connects to MongoDB Atlas as the database. Also, some of the app functionalities are missing at this stage, with most of the functionalities being reading from the database.
+The current submission connects to MongoDB Atlas as the database.
 
 Some startup scripts in place to run the server:
 1. Run `npm install` to download the required dependencies

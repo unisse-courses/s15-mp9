@@ -1,4 +1,12 @@
 /* Custom Website Boxing! */
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .topnav {
     display: flex;
     position: relative;
@@ -12,9 +20,9 @@
      width: 100%;
      box-sizing: border-box;
      padding: auto;
-     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2); 
-     background-color: #F4F4F4;
-     z-index: 1; 
+     background-color: #3333cc;
+     z-index: 2;
+    backdrop-filter: saturate(180%) blur(20px); 
  }
 
  .nav-content {
@@ -56,15 +64,20 @@
     margin-left: .5em;
 }
 
-.nav-logo a{
-    font-weight: 700;
-    font-size: 20px;
-    color: #3a3a3a;
+.nav-logo a {
+    font-family: 'Roboto';
+    font-weight: 700 !important;
+    font-size: 20px !important;
+    color: white;
     text-decoration: none;
 }
 
-svg path:hover{
-    fill: #3333cc;
+.topnav svg path {
+    fill:white;
+}
+
+.topnav svg path:hover{
+    fill: yellow;
 }
 
 .custom-container {
@@ -109,7 +122,7 @@ svg path:hover{
 
 .form-group label { 
     font-weight:600;
-    font-size:12px;
+    font-size:14px;
     margin-bottom:8px;
     color:#3e332e
 }
@@ -146,7 +159,11 @@ svg path:hover{
 }
 
 .has-search .form-control {
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(49, 48, 48);
     padding-left: 2.375rem;
+    width: 350px;
+    text-align: center;
 }
 
 .has-search .form-control-feedback {
@@ -161,10 +178,26 @@ svg path:hover{
     color: black;
 }
 
-.has-search input {
-    width: 200px;
+.fa.fa-search.form-control-feedback {
+    background:#5d02f05d;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 }
 
+.page-title {
+    font-family: 'Roboto';
+    font-weight: 700;
+    width: 100%;
+    color: black;
+    font-size: 32px;
+}
+
+.signup-or {
+    padding: 0px 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
 @media all and (max-width: 610px) {
     #settings {
       display: none;

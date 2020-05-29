@@ -1,111 +1,8 @@
 $(document).ready(function(){
 
-    /*form validation
-    $("#sign-in-btn").click(function(){
-        var email = $("email").val();
-        var pass = $("password").val();
-        $.ajax({
-            url:"/login",
-            type: "POST",
-            contentType: "application/json",
-            headers: {'Content-Type': 'application/json'},
-            data:JSON.stringify({
-               email:email,
-               password:pass
-            }),
-            success: console.log("success"),
-            error: function(xhr){
-                console.log(xhr.statusText);
-            }
-        });
-      */
-
-
-    /*User Registration  thru ajax
-    $("#register-btn").click(function(){
-
-        //boolean 
-        var valid = true;
-
-        valid = checkifValid($("#reg-fname"),valid);
-        valid = checkifValid($("#reg-lname"),valid);
-        valid = checkifValid($("#reg-email"),valid);
-        valid = checkifValid($("#reg-idnum"),valid);
-        valid = checkifValid($("#reg-pass"),valid);
-        valid = checkifValid($("#select-o"),valid);
-        valid = checkifValid($("#select-p"),valid);
-
-        if(valid == true){
-                //get form 
-                var myform = document.getElementById("reg_form");
-                //create formdata object
-                var formData = new FormData(myform);
-
-                //ajax request to post the formdata to the url
-                $.ajax({
-                    url: '/', 
-                    type: 'POST',
-                    data:formData,
-                    processData:false,
-                    contentType: false,
-                    error: function(jXhr, status){
-                        console.log('error: '+status);  
-                        console.log(formData);
-                        
-                    },
-                    success: function(data){
-                        console.log('upload successful: '+data);
-                        for (var value of formData.values()) {
-                            console.log(value); 
-                         }
-                         //window.location.assign('/explore');
-                    }
-                })
-            
-       
-
-
-        
-        }
-    })*/
-
-
-    /*Event Creation
-    $("#submit-event").click(function(){
-   
-
-        var myform = document.getElementById("event_reg");
-        console.log(myform);
-        var formData = new FormData(myform);
-
-        $(myForm + 'input[type=checkbox]:not(:checked)').each(function () {
-            // set value 0 and check it
-        $(myForm).attr('checked', true).val(0);
-        })
-
-        $.ajax({
-            url: '/ad-eventreg', 
-            type: 'POST',
-            data:formData,
-            processData:false,
-            contentType: false,
-            error: function(jXhr, status){
-                console.log('error: '+status);  
-                console.log(formData);
-                
-            },
-            success: function(data){
-                console.log('upload successful: '+data);
-                for (var value of formData.values()) {
-                    console.log(value); 
-                 }
-                 //window.location.assign('/explore');
-            }
-        })
-
+    $(".google-button").click(function(e){
+        window.location="/google"
     })
-*/
-
 
     //function to check if fields are valid
     function checkifValid(field,val){
@@ -129,32 +26,7 @@ $(document).ready(function(){
 
 
 
-    //toggles checkboxes
-    var officerStatus = function () {
-        if ($("#is-officer").is(":checked")) {
-            $('#select-org').show();
-            $('#select-pos').show();
-        }
-        else {
-            $('#select-org').hide();
-            $('#select-pos').hide();
-        }
-      };
-      $(officerStatus);
-      $("#is-officer").change(officerStatus);
-
-      var incentiveStatus = function () {
-        if ($("#incentives").is(":checked")) {
-            $('#incentivesdet').show()
-        }
-        else {
-            $('#incentivesdet').hide();
-        }
-      };
-
-      $(incentiveStatus);
-      $("#incentives").change(incentiveStatus);
-    
+  
 
       $("#cso").click(function(){
         $("div[value = 'cso']").each(function(){
@@ -191,7 +63,22 @@ $(document).ready(function(){
             })
         })
       })
+
+      function validateFileType() {
+        var fileName = document.getElementById("reg-photo").value;
+        var idxDot = fileName.lastIndexOf(".") + 1;
+        var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+      
+        if (!(extFile === "jpg" || extFile === "jpeg" || extFile === "png")) {
+          alert("Only JPG/JPEG and PNG files are allowed for upload.");
+          document.getElementById("reg-photo").value = "";
+        }  
+    }
     
 
       
 });
+
+$(document).on('change', '.custom-file-input', function (event) {
+    $(this).next('.custom-file-label').html(event.target.files[0].name);
+})

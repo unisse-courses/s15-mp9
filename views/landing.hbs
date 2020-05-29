@@ -1,11 +1,13 @@
 {{#section 'head'}}
+    <title>Nook</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="../../public/css/styling.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/redmond/jquery-ui.css">
+    <link rel="stylesheet" href="/public/css/styling.css">
+    <link rel="stylesheet" href="/public/css/widgets.css">
     <script src="../../scripts/landing.js"></script> 
     <!-- Google Sign-In -->
-    <meta name="google-signin-client_id" content="473203977419-114n43ik4g8rcjvfech0ckgddv0250c3.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="{{clientID}}">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <title>Nook</title>
 {{/section}}
 
 <!-- Landing Page Section -->
@@ -84,31 +86,17 @@
                                 </div>
                                 <input type="password" class="form-control" id="user-pass" placeholder=" Password" name = 'password'>
                                 <div class="sign-in-btn-set">
-                                    <button type="submit" id="sign-in-btn" class="custombtn thinbtn mt-0" style="justify-content: center;">sign in</button>
-                                        <span style="padding: 0px 10px;"> or </span>
-                                    <div class="g-signin2 google-sign-in" data-onsuccess="onSignIn" data-theme="dark"></div>
+                                    <button type="submit" id="sign-in-btn" class="custombtn thinbtn mt-0" style="justify-content: center;">Sign In</button>
+                                        <span class="signup-or"> or </span>
+                                       <button type="button" class="google-button">
+                                            <span class="google-button__icon">
+                                                <svg viewBox="0 0 366 372" xmlns="http://www.w3.org/2000/svg"><path d="M125.9 10.2c40.2-13.9 85.3-13.6 125.3 1.1 22.2 8.2 42.5 21 59.9 37.1-5.8 6.3-12.1 12.2-18.1 18.3l-34.2 34.2c-11.3-10.8-25.1-19-40.1-23.6-17.6-5.3-36.6-6.1-54.6-2.2-21 4.5-40.5 15.5-55.6 30.9-12.2 12.3-21.4 27.5-27 43.9-20.3-15.8-40.6-31.5-61-47.3 21.5-43 60.1-76.9 105.4-92.4z" id="Shape" fill="#EA4335"/><path d="M20.6 102.4c20.3 15.8 40.6 31.5 61 47.3-8 23.3-8 49.2 0 72.4-20.3 15.8-40.6 31.6-60.9 47.3C1.9 232.7-3.8 189.6 4.4 149.2c3.3-16.2 8.7-32 16.2-46.8z" id="Shape" fill="#FBBC05"/><path d="M361.7 151.1c5.8 32.7 4.5 66.8-4.7 98.8-8.5 29.3-24.6 56.5-47.1 77.2l-59.1-45.9c19.5-13.1 33.3-34.3 37.2-57.5H186.6c.1-24.2.1-48.4.1-72.6h175z" id="Shape" fill="#4285F4"/><path d="M81.4 222.2c7.8 22.9 22.8 43.2 42.6 57.1 12.4 8.7 26.6 14.9 41.4 17.9 14.6 3 29.7 2.6 44.4.1 14.6-2.6 28.7-7.9 41-16.2l59.1 45.9c-21.3 19.7-48 33.1-76.2 39.6-31.2 7.1-64.2 7.3-95.2-1-24.6-6.5-47.7-18.2-67.6-34.1-20.9-16.6-38.3-38-50.4-62 20.3-15.7 40.6-31.5 60.9-47.3z" fill="#34A853"/></svg>
+                                            </span>
+                                            <span class="google-button__text">Sign In</span>
+                                        </button>
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <!-- Google Sign In -->
-                    <div style="width: 100%;">
-                        <script>
-                        function onSignIn(googleUser) {
-                            // Useful data for your client-side scripts:
-                            var profile = googleUser.getBasicProfile();
-                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                            console.log('Full Name: ' + profile.getName());
-                            console.log('Given Name: ' + profile.getGivenName());
-                            console.log('Family Name: ' + profile.getFamilyName());
-                            console.log("Image URL: " + profile.getImageUrl());
-                            console.log("Email: " + profile.getEmail());
-                    
-                            // The ID token you need to pass to your backend:
-                            var id_token = googleUser.getAuthResponse().id_token;
-                            console.log("ID Token: " + id_token);
-                        }
-                        </script>
                     </div>
                 </div>
             </div>
@@ -118,8 +106,8 @@
 </section>
 <!-- Registration Modal -->
 <section class="modal fade" role="dialog" id="get-started-modal">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="box modal-content">
+    <div class="modal-dialog modal-dialog-centered modal-xl"  style="width: fit-content;">
+        <div class="box modal-content" style="max-width: 860px;"> 
             <div class="inner-box">
                 <button type="button" class="close" data-dismiss="modal">
                 &times;
@@ -135,26 +123,26 @@
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
                                         <label for="reg-fname">First Name</label>
-                                        <input type="text" class="form-control" id="reg-fname" name = "reg_fname">
+                                        <input type="text" class="form-control" id="reg-fname" name = "reg_fname" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
                                         <label for="reg-lname">Last Name</label>
-                                        <input type="text" class="form-control" id="reg-lname" name= "reg_lname">
+                                        <input type="text" class="form-control" id="reg-lname" name= "reg_lname" required>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group mb-2">
-                            <label for="reg-email">School Email</label>
-                            <input type="email" class="form-control" id="reg-email" name = "reg_email" aria-describedby="emailHelp">
+                                <label for="reg-email">School Email</label>
+                                <input type="email" class="form-control" id="reg-email" name = "reg_email" aria-describedby="emailHelp" required>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-2">
                                         <label for="reg-idnum">ID Number</label>
-                                        <input type="text" class="form-control" id="reg-idnum" name = "reg_idnum">
+                                        <input type="text" class="form-control" id="reg-idnum" name = "reg_idnum" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2">
@@ -175,51 +163,17 @@
                             <div class="form-group mb-2">
                                 <label for="reg-photo">Attach Profile Photo</label>
                                 <div class="custom-file">
-                                    <label class="custom-file-label">Choose</label>
-                                    <input type="file" class="form-control custom-file-input" id="reg-photo" name = "profilepic">
+                                    <input type="file" class="form-control custom-file-input" id="reg-photo" name = "profilepic" accept = ".jpg, .jpeg, png" id = "inputGroupFile02" onchange="validateFileType()">
+                                    <label class="custom-file-label" for = "inputGroupFile02">Choose</label>
                                 </div>
                             </div>
                         
                             <div class="form-group mb-2">
                                 <label for="reg-pass">Password</label>
-                                <input type="password" class="form-control" id="reg-pass" name = "reg_pass">
+                                <input type="password" class="form-control" id="reg-pass" name = "reg_pass" required>
                             </div>
                             
-                            <div class= "form-row">
-                                <div class = "col-md-6">
-                                    <div class="form-group form-check mb-2">
-                                        <input type="checkbox" class="form-check-input mt-0" id="is-officer">
-                                        <label class="form-check-label" for="is-officer">I'm an officer of an organization</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "form-row">
-                                <div class="col-md-6 mb-2">
-                                    <div class="form-group" id = "select-org">
-                                        <select class="custom-select" id = "select-o">
-                                            <option value = "0" selected>Select Org</option>
-                                            <option value="1">DLSU Sports</option>
-                                            <option value="2">Syntax</option>
-                                            <option value="3">Developer Student Club Taft</option>
-                                            <option value="4">Green Media Group</option>
-                                            <option value="5">Animo Squad</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-2">
-                                    <div class="form-group" id = "select-pos">
-                                        <select class="custom-select" id = "select-p">
-                                            <option value = "0" selected>Select Position</option>
-                                            <option value="1">President</option>
-                                            <option value="2">Vice President</option>
-                                            <option value="3">Secretary</option>
-                                            <option value="4">Treasurer</option>
-                                            <option value="5">Representative</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" id="register-btn" class="custombtn thinbtn mt-0 mb-4" style="justify-content: center;">register</button>
+                            <button type="submit" id="register-btn" class="custombtn thinbtn mt-0 mb-4" style="justify-content: center;">Register</button>
                         </form>
                     </div>
                 </div>

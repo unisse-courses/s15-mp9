@@ -22,7 +22,7 @@ const EventSchema = mongoose.Schema({
     },
 
     date:{
-        type: Date,
+        type: String,
         required: false,
     },
 
@@ -50,10 +50,15 @@ const EventSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    
+    current_cap: {
+        type: Number,
+        required: false
+    },
 
     things: {
         type: String,
-        required: true
+        required: false
     },
 
     codes:{
