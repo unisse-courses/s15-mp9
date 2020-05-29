@@ -8,7 +8,7 @@ A centralized space to view CSO and Non-CSO organizations, explore events in DLS
 * Kirsten Sison 
 
 ## Link to deployed app ##
-www.dlsu-nook.herokuapp.com
+http://dlsu-nook.herokuapp.com/
 
 ## :art: Design ##
 Before coding this project, we had a design sprint on what the layout of Nook would be like. In this process, we did a bit of design research in drabbble for standard UIs for web apps similar to Nook. We tried to stick with a Bootstrap themed website as this was the CSS Framework we used. Our group used Figma to create a wireframe. 
